@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<script src = "https://www.gstatic.com/firebasejs/7.2.0/firebase.js" > </script>
+
+
+https: //firebase.google.com/docs/web/setup#available-libraries -->
+<script src = "https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js" > </script>
+
+<script >
+var firebaseConfig = {
+apiKey: "AIzaSyBhNK1Qcq505B_CQzX5X0KwwvR_PbfpWkQ",
+authDomain: "pricehub-2d269.firebaseapp.com",
+databaseURL: "https://pricehub-2d269.firebaseio.com",
+projectId: "pricehub-2d269",
+storageBucket: "pricehub-2d269.appspot.com",
+messagingSenderId: "621656093819",
+appId: "1:621656093819:web:1931cb44c32d0d05861ede",
+measurementId: "G-KJJT9GZMS6"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database().ref();
+
+let arr = []
+
+
+database.child("reports").on("value", data => {
+
+console.log(data, data.val().length)
+
+})
+
+</script>
+
+<title>Price Hub Report Monitoring</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+          <nav class="navbar navbar-light bg-light">
+              <span class="navbar-brand mb-0"><h1> Price Hub Report Monitoring </h1></span>
+          </nav>
+      </div>
+
+
+    <div class="row">
+
+
+          <div class=" text-right col-sm-6 col-lg-3" >
+              <div class="card text-white bg-warning">
+              <div class="card-body">
+                <h5 class="card-title">Pending Reports</h5>
+                <p class="card-text">     </p>
+                <a href="./pages/report.html" class="btn btn-light"> Check Report <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class=" text-right col-sm-6 col-lg-3" >
+              <div class="card text-white bg-danger">
+              <div class="card-body">
+                <h5 class="card-title">Unverified Reports</h5>
+                <p class="card-text">     </p>
+                <a href="#" class="btn btn-light"> Check Report <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class=" text-right col-sm-6 col-lg-3" >
+              <div class="card text-white bg-info">
+              <div class="card-body">
+                <h5 class="card-title">Verified Reports</h5>
+                <p class="card-text">     </p>
+                <a href="#" class="btn btn-light"> Check Report <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class=" text-right col-sm-6 col-lg-3" >
+              <div class="card text-white bg-primary">
+              <div class="card-body">
+                <h5 class="card-title">Completed / Resolve</h5>
+                <p class="card-text">     </p>
+                <a href="#" class="btn btn-light"> Check Report <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      <!--/.row-->
+</div>
+    <!-- You can also require other files to run in this process -->
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="./renderer.js"></script>
+  </body>
+  
+</html>
+
