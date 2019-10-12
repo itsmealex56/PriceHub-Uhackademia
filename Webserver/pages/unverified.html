@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel= "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <title>Price Hub Report Monitoring</title>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+        <script> 
+            var firebaseConfig = {
+        apiKey: "AIzaSyBhNK1Qcq505B_CQzX5X0KwwvR_PbfpWkQ",
+        authDomain: "pricehub-2d269.firebaseapp.com",
+        databaseURL: "https://pricehub-2d269.firebaseio.com",
+        projectId: "pricehub-2d269",
+        storageBucket: "pricehub-2d269.appspot.com",
+        messagingSenderId: "621656093819",
+        appId: "1:621656093819:web:1931cb44c32d0d05861ede",
+        measurementId: "G-KJJT9GZMS6"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      var database = firebase.database().ref();
+
+      let arr = []
+     
+
+      database.child("reports").on("value", data => {
+        
+          let count = 0;
+         // console.log(data, data.val())
+         let datas = document.querySelector("#datas")
+         datas.innerHTML = ""
+          data.forEach(data => {
+              console.log(data)
+        
+        datas.innerHTML += `  
+                <tr>
+                    <td>${++count}</td>
+                    <td>${data.val().user}</td>
+                    <td>${data.val().type}</td>
+                    <td>${data.val().establishment}</td>
+                    <td>${data.val().productName}</td>
+                    <td>${data.val().date}</td>
+                    <td><a href="#" class="btn btn-primary"> Verified  <i class="fa fa-arrow-right" aria-hidden="true"></i></a></td>
+                </tr>`
+        console.log(data.key, data.val())
+    })
+      })
+        </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <nav class="navbar navbar-light bg-light">
+                <span class="navbar-brand mb-0">
+                    <h1> Price Hub Report Monitoring </h1>
+                </span>
+            </nav>
+        </div>
+
+        <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr> <style> th { text-align:center } </style>
+                    <th class="th-sm">ID
+                    </th>
+                    <th class="th-sm">USER
+                    </th>
+                    <th class="th-sm">TYPE OF REPORT
+                    </th>
+                    <th class="th-sm">ESTABLISHMENT
+                        </th>
+                     <th class="th-sm">PRODUCT NAME
+                        </th>
+                    <th class="th-sm">DATE
+                        </th>
+                    <th class="th-sm">ACTION
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="datas">
+               
+            </tbody>
+        </table>
+        <span> <a href="../index.html" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"> Back </i></a></span>
+    </div>
+    
+
+
+
+    <!-- You can also require other files to run in this process -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src=" https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="../renderer.js"></script>
+    <!-- <script>
+            $(document).ready(function () {
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+            });
+    </script> -->
+</body>
+
+</html>
